@@ -98,7 +98,7 @@ def handle_client(conn, addr):
                 print(f"Connection with {addr} timed out.")
                 connected = False
             except Exception as e:
-                print(f"ERROR handling CLient {addr}: {e}")
+                print(f"ERROR handling Client {addr}: {e}")
                 connected = False
                 break
     finally:

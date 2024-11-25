@@ -5,9 +5,10 @@ PORT = 5050
 
 HEADER = 64         #64 bytes length of the message
 
-
-SERVER = socket.gethostbyname(socket.gethostname())     #this gets the name of device/ip address
-print(socket.gethostname())
+SERVER = "35.50.22.164"
+#SERVER = socket.gethostbyname(socket.gethostname())     #this gets the name of device/ip address
+#print(socket.gethostbyname(socket.gethostname()))
+#print(socket.gethostname())
 
 ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'

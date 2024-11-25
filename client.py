@@ -15,7 +15,12 @@ HEADER = 64
 PORT = 5050
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "DISCONNECTED!"
-SERVER =  socket.gethostbyname(socket.gethostname())      #SERVER IP 
+SERVER = "35.50.22.164"
+
+
+
+
+#SERVER =  socket.gethostbyname(socket.gethostname())      #SERVER IP 
 ADDR = (SERVER,PORT)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

@@ -5,7 +5,11 @@ PORT = 5050
 
 HEADER = 64         #64 bytes length of the message
 
-SERVER = "35.50.22.164"
+SERVER = "0.0.0.0"
+print("SERVER ADDRESS: [" + SERVER + "]")
+
+
+#SERVER = "35.50.22.33"
 #SERVER = socket.gethostbyname(socket.gethostname())     #this gets the name of device/ip address
 #print(socket.gethostbyname(socket.gethostname()))
 #print(socket.gethostname())
@@ -36,11 +40,11 @@ def broadcast(message, sender_conn):
                 try:
                     conn.send(message.encode(FORMAT))
                 except Exception as e:
-                    print(f"Error sending message to a client: {e}")
+                    print(f"ERROR SENDING MESSAGE TO CLIENT: {e}")
 
 
 def handle_client(conn, addr):
-    print("NEW CONNECTION  {addr} CONNECTED.")
+    print("NEW CONNECTION ESTABLISHED: {addr} CONNECTED.")
     username = None  #set it to none
 
     conn.settimeout(None)  # will close the server after x amount of time
@@ -115,6 +119,18 @@ def handle_client(conn, addr):
                #close connection
 
 
+###Stop bruteforce connections
+MAX_FAILED_ATTEMPTS = 10
+failed_attempts = {}
+
+def track_failed_attempts(addr):
+    if addr not in failed_attempts:
+        failed_attempts[addr] = 0
+    failed_attempts[addr] += 1
+    if failed_attempts[addr] > MAX_FAILED_ATTEMPTS:
+        print(f"BLOCKING {addr} due to too many failed attempts.")
+        return True
+    return False
 
 ### handle new connections and distibute where they need to go
 def start():
@@ -129,5 +145,5 @@ def start():
 
 
 
-print("SERVER STARTING!!!!!!!!!!!!!!!")
+print("--------- [SERVER NOW STARTING] ----------")
 start()

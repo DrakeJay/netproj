@@ -15,8 +15,9 @@ HEADER = 64
 PORT = 5050
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "DISCONNECTED!"
-SERVER = "35.50.22.164"
-
+SERVER = "35.50.68.33"   #oakland universities probably will change when connecting to oakland network again
+#SERVER ip for home
+#SERVER = "192.168.0.26"
 
 
 
@@ -75,14 +76,14 @@ class ChatClient:
             client.send(send_length)
             client.send(message)
         except Exception as e:
-            print(f"ERROR sending username: {e}")
+            print(f"ERROR SENDING USERNAME: {e}")
 
     def send_messages(self):
         #print("Type here and 'EXIT' to leave.")
         msg = self.input_field.get()
         if msg:
             #this should show the user who sent the message to their chat box
-            self.show_message(f"[You]: {msg}")
+            self.show_message(f"[YOU]: {msg}")
 
             self.send_to_server(msg)
            
@@ -99,7 +100,7 @@ class ChatClient:
                 message = client.recv(2048).decode(FORMAT)
                 self.show_message(message)
             except Exception as e:
-                self.show_message(f"ERROR Could not get message: {e}")
+                self.show_message(f"ERROR COULD NOT GET MESSAGE: {e}")
                 
                 break
 
@@ -114,7 +115,7 @@ class ChatClient:
         self.chat_area.config(state=tk.DISABLED)
 
 
-    ## format the message for the sever
+    ## format the message for the server
     def send_to_server(self, msg):
         try:
             message = msg.encode(FORMAT)
@@ -124,10 +125,12 @@ class ChatClient:
             client.send(send_length)
             client.send(message)
         except (ConnectionResetError, BrokenPipeError):
-            self.show_message("Failed to send message. Connection lost.")
+            self.show_message("FAILED TO SEND MESSAGE. CONNECTION HAS BEEN LOST.")
             self.master.quit()
         except Exception as e:
-            self.show_message(f"ERROR could not send message: {e}")
+            self.show_message(f"ERROR COULD NOT SEND MESSAGE: {e}")
+    
+    
 
 
 

@@ -28,8 +28,10 @@ Requirements
     Python 3.10 or later
     Libraries: socket, threading, tkinter (these come with Python, no extra installation needed)
     Server and clients need to be on the same network (like Wi-Fi or LAN).
+    The client will need the ip address of the server pc in order to establish a   connection. Add to the client.py code   
 
 Steps
+
 
     Start the Server:
         Run the server.py file:
@@ -78,13 +80,13 @@ Client Example:
     [You]: Hello everyone!
     [Alice]: Hi!
 
-Things to Keep in Mind
+In order for it to work correctly 
 
     Same Network: The server and clients need to be on the same network for this to work.
     No Private Messages: All messages are shared with everyone.
     Plain Text: Messages are not encrypted, so it’s not secure for sensitive information.
 
-Ideas for Future Improvements
+Some Ideas for Improvements
 
     Add private messaging between users.
     Use encryption to make the chat more secure.
